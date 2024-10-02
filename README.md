@@ -9,6 +9,8 @@
 - css reset
 - base font size is 62.5% (1rem = 10px) for sizing workflow
 
+# Render logic
+
 # Composables
 
 # Libraries
@@ -16,3 +18,5 @@
 # Font
 
 # Todos
+
+# Algorithm

@@ -11,7 +11,7 @@ const { items } = defineProps({
   },
 });
 const isTab = useMedia("(max-width: 700px)");
-const isMobile = useMedia("(max-width: 400px)");
+const isMobile = useMedia("(max-width: 300px)");
 const cols = computed(() => {
   if (isMobile.value) {
     return 1;
@@ -26,7 +26,7 @@ const itemsPerCol = computed(() =>
   Math.max(1, Math.floor(items.length / cols.value))
 );
 
-const groups = computed(() => {
+const newGroups = computed(() => {
   let result = [];
   for (let i = 0; i < cols.value; i++) {
     result.push(
@@ -34,6 +34,13 @@ const groups = computed(() => {
     );
   }
   return result;
+});
+
+const groups = computed((groups = [[], [], []]) => {
+  newGroups.value.forEach((items, i) => {
+    items.forEach((item) => groups[i]?.push(item));
+  });
+  return groups;
 });
 
 const selection = ref(null);
@@ -89,7 +96,7 @@ const isOpen = ref(false);
     --column-gutter: 20px;
     --columns: 2;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 300px) {
     --column-gutter: 20px;
     --columns: 1;
   }
