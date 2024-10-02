@@ -1,0 +1,147 @@
+<script setup>
+import {
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+} from "radix-vue";
+import { X } from "lucide-vue-next";
+defineProps({
+  isOpen: Boolean,
+  imageUrl: String,
+  imageUrlFb: String,
+  title: String,
+  location: String,
+  alt_description: String,
+});
+</script>
+
+<template>
+  <DialogRoot :open="isOpen" @update:open="(open) => !open && $emit('close')">
+    <DialogPortal>
+      <DialogOverlay class="DialogOverlay" />
+      <DialogContent class="DialogContent">
+        <DialogClose class="IconButton" aria-label="Close">
+          <X :size="26" />
+        </DialogClose>
+        <img :src="imageUrl" aria-hidden />
+        <img :src="imageUrlFb" :alt="alt_description" />
+        <div class="info-container">
+          <DialogTitle class="title">{{ title }}</DialogTitle>
+          <DialogDescription class="location">
+            {{ location }}
+          </DialogDescription>
+        </div>
+      </DialogContent>
+    </DialogPortal>
+  </DialogRoot>
+</template>
+
+<style lang="scss">
+.DialogOverlay {
+  background-color: hsl(206 22% 7% / 20%);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.DialogContent {
+  --radius: 0.8rem;
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 900px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  img {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: top 10px;
+    z-index: 1;
+    border-radius: var(--radius) var(--radius) 0px 0px;
+
+    &:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  }
+
+  .info-container {
+    padding: 20px 30px 30px;
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .location {
+      font-size: 1rem;
+      color: var(--color-grey);
+    }
+  }
+}
+.DialogContent:focus {
+  outline: none;
+}
+
+.IconButton {
+  font-family: inherit;
+  border-radius: 100%;
+  border: none;
+  height: 30px;
+  width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  position: absolute;
+  top: -34px;
+  right: -6%;
+
+  z-index: 10;
+  cursor: pointer;
+
+  @media (max-width: 800px) {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+</style>
