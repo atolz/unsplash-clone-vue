@@ -36,12 +36,18 @@ const initLoadMore = ref(true);
 
 <template>
   <SearchPanel
-    @search="(val) => (search = val)"
+    @search="
+      (val) => {
+        search = val;
+        page = 1;
+        initLoadMore = true;
+      }
+    "
     :loading="loading"
     :search="search"
   />
-  <CardsContainer v-if="!loading || photos.length" :items="photos" />
-  <CardsLoading v-if="loading && !photos.length" />
+  <CardsContainer v-if="!loading || !initLoadMore" :items="photos" />
+  <CardsLoading v-if="loading && initLoadMore" />
   <LoadMore
     v-if="!loading"
     :loading="loading"
