@@ -11,12 +11,9 @@ export default function useInview(target, container = null, rootMargin, threshol
     };
   });
   const handleIntersect = (entries) => {
-    console.log("is itersecting", entries[0].isIntersecting);
     inView.value = entries[0].isIntersecting;
   };
   const observe = new IntersectionObserver(handleIntersect, options.value);
-
-  watchEffect(() => console.log("target is", target.value));
 
   onMounted(() => {
     observe.observe(target.value);

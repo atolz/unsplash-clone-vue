@@ -7,6 +7,9 @@ export default function useFetch(url) {
   const loading = ref(null);
 
   watchEffect(async (cleanup) => {
+    if (!url) {
+      return;
+    }
     let controller = new AbortController();
     loading.value = true;
     try {

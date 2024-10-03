@@ -54,8 +54,7 @@ defineProps({
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   // cursor: pointer;
   cursor: zoom-in;
-  animation: fadeIn 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95)
-    calc(0.2s * var(--index)) backwards;
+  animation: fadeIn 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95) backwards;
 
   @media (max-width: 400px) {
     max-width: 100%;

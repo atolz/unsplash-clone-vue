@@ -1,6 +1,8 @@
 <script setup>
 import { computed, ref, watchEffect } from "vue";
 import useMedia from "../composables/useMedia";
+import useSortLayout from "../composables/useSortLayout";
+import getMinHeightDistribution from "../utils/getMinHeightDistribution";
 import Card from "./Card.vue";
 import Modal from "./Modal.vue";
 
@@ -22,22 +24,11 @@ const cols = computed(() => {
     return 3;
   }
 });
-const itemsPerCol = computed(() =>
-  Math.max(1, Math.floor(items.length / cols.value))
-);
 
-const newGroups = computed(() => {
-  let result = [];
-  for (let i = 0; i < cols.value; i++) {
-    result.push(
-      items?.slice(itemsPerCol.value * i, itemsPerCol.value * (i + 1))
-    );
-  }
-  return result;
-});
+const newGroups = computed(() => getMinHeightDistribution(items, cols.value));
 
 const groups = computed((groups = [[], [], []]) => {
-  newGroups.value.forEach((items, i) => {
+  newGroups?.value.forEach((items, i) => {
     items.forEach((item) => groups[i]?.push(item));
   });
   return groups;
@@ -78,7 +69,7 @@ const isOpen = ref(false);
 
 <style lang="scss" scoped>
 .container {
-  --column-gutter: 40px;
+  --column-gutter: 34px;
   --columns: 3;
   max-width: 830px;
   padding: 0 20px;
@@ -93,16 +84,19 @@ const isOpen = ref(false);
     --column-gutter: 20px;
   }
   @media (max-width: 700px) {
-    --column-gutter: 20px;
+    --column-gutter: 10px;
     --columns: 2;
   }
   @media (max-width: 300px) {
-    --column-gutter: 20px;
+    // --column-gutter: 20px;
     --columns: 1;
   }
   .sub {
     display: grid;
     row-gap: 28px;
+    @media (max-width: 700px) {
+      row-gap: 12px;
+    }
   }
 }
 </style>
