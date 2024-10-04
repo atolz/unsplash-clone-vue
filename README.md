@@ -12,7 +12,7 @@ npm run dev
 
 ### Features
 
-- Photo Search: Includes loading indicators, result clearing, re-search, and an overlay effect for better readability.
+- Photo Search: Includes router state search, loading indicators, result clearing, re-search, and an overlay effect for better readability.
 
 - Infinite Scrolling: Loads additional images as you scroll to the bottom.
 
@@ -47,3 +47,5 @@ Uses Google's Plus Jakarta Sans, chosen for its close match to the intended UI a
 ### Notes & Future Improvements
 
 - A custom masonry layout could better handle column arrangements, though CSS masonry layout lacks broad support currently.
+- Download
+- Custom Error and empty states
