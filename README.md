@@ -14,7 +14,7 @@ npm run dev
 
 - Photo Search: Includes router state search, loading indicators, result clearing, re-search, and an overlay effect for better readability.
 
-- Infinite Scrolling: Loads additional images as you scroll to the bottom.
+- **Infinite Scrolling:** Loads additional images as you scroll to the bottom.
 
 - Photo Grid Layout: Displays photos with a custom grid where the first row overlaps the search bar backdrop.
 
@@ -26,8 +26,9 @@ npm run dev
 
 ### Algorithm
 
-- `getMinHeightDistribution`: Distributes photos into columns to minimize height differences visually, using aspect ratio data from the Unsplash API for calculation.
-  Example: ![App Screenshot](./shot-1.png) to ![App Screenshot](./shot-2.png)
+- `getMinHeightDistribution`: Distributes photos into columns to minimize height differences visually, using aspect ratio data from the Unsplash API for calculation.</br>
+<div style="text-align: center;">
+Example:</div> ![App Screenshot](https://unsplash-clone-vue.vercel.app/shot-1.png) to ![App Screenshot 2](https://unsplash-clone-vue.vercel.app/shot-1.png)
 
 ### Composables
 
