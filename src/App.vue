@@ -38,7 +38,7 @@ const { data, loading } = useFetch(url);
 const photos = computed(() => data?.value?.results ?? []);
 const initLoadMore = ref(true);
 
-const onSearch = (val) => {
+const handleSearch = (val) => {
   search.value = val;
   page.value = 1;
   router.push({ query: { search: val } });
@@ -48,7 +48,7 @@ const onSearch = (val) => {
 
 <template>
   <SearchPanel
-    @search="onSearch"
+    @search="handleSearch"
     :loading="loading"
     :search="search"
     :defaultValue="defaultValue"
@@ -69,7 +69,7 @@ const onSearch = (val) => {
       initLoadMore = false;
     "
   />
-  <div class="extra-loading" v-if="loading && !initLoadMore">
+  <div class="extra-loading" v-if="loading">
     <LoadingMore />
   </div>
 </template> 
