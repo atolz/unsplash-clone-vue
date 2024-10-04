@@ -1,6 +1,6 @@
 export default function getMinHeightDistribution(items = [], parts) {
   const groups = Array.from({ length: parts }, () => []);
-  items.sort((a, b) => a?.width / a?.height - b?.width / b?.height);
+  items.sort((a, b) => b?.height / b?.width - a?.height / a?.width);
 
   for (let i = 0; i < items?.length; i++) {
     let curr = items[i];
@@ -23,7 +23,7 @@ export default function getMinHeightDistribution(items = [], parts) {
 function sumArray(arr = []) {
   let res = 0;
 
-  res = arr.reduce((acc, curr) => (acc += curr?.height), 0);
+  res = arr.reduce((acc, curr) => (acc += curr?.height / curr?.width), 0);
 
   return res;
 }
