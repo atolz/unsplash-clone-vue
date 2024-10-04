@@ -54,7 +54,10 @@ const onSearch = (val) => {
     :defaultValue="defaultValue"
   />
   <!-- <CardsContainer2 v-if="!loading || !initLoadMore" :items="photos" /> -->
-  <CardsContainer v-if="!loading || !initLoadMore" :items="photos" />
+  <CardsContainer
+    v-if="(!loading || !initLoadMore) && photos.length"
+    :items="photos"
+  />
   <CardsLoading v-if="loading && initLoadMore" />
   <EmptyState v-if="!photos.length" />
   <LoadMore

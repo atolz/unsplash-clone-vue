@@ -26,8 +26,8 @@ defineProps({
       <img :height="height" :src="imageUrl" :alt="alt_description" />
       <div class="gradient-overlay"></div>
       <div class="info-container">
-        <h3 class="photographer-name">{{ title }}</h3>
-        <div class="location">
+        <h3 class="photographer-name truncate">{{ title }}</h3>
+        <div class="location truncate">
           {{ location }}
         </div>
       </div>
@@ -90,8 +90,6 @@ defineProps({
       }
 
       .location {
-        display: flex;
-        align-items: flex-start;
         font-size: 0.8rem;
       }
     }

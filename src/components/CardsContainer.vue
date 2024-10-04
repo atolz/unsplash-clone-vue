@@ -79,11 +79,12 @@ const isOpen = ref(false);
   align-items: start;
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   transform: translateY(-35px);
-  // min-height: 100vh;
+  min-height: calc(100vh - 300px);
   @media (max-width: 800px) {
     --column-gutter: 20px;
   }
   @media (max-width: 700px) {
+    padding: 0 10px;
     --column-gutter: 10px;
     --columns: 2;
   }
@@ -94,6 +95,7 @@ const isOpen = ref(false);
   .sub {
     display: grid;
     row-gap: 28px;
+    margin-bottom: 10px;
     @media (max-width: 700px) {
       row-gap: 12px;
     }
