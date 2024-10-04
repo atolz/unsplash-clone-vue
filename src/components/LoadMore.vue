@@ -13,15 +13,7 @@ const { loading, initLoadMore } = defineProps({
 <template>
   <div>
     <div class="buffer">
-      <button
-        @click="
-          $emit('more');
-          showInitialLoadMore = false;
-        "
-        v-if="initLoadMore"
-      >
-        Load More...
-      </button>
+      <button @click="$emit('more')" v-if="initLoadMore">Load More</button>
       <LoadingMore v-if="loading" />
       <InView @visible="$emit('more')" v-if="!loading && !initLoadMore" />
     </div>

@@ -1,41 +1,49 @@
-# Frontend Test Cowrywise
+# Unsplash Clone
 
-[Unsplash clone](https://unsplash-clone-vue.vercel.app/) built with Vite + Vue 3(Composition API), SCSS,
+[Unsplash clone](https://unsplash-clone-vue.vercel.app/) built with Vite, Vue 3 (Composition API), and SCSS.
+
+### Run Locally
+
+To start the app in development mode, use:
 
 ```bash
 npm run dev
 ```
 
-## Features
+### Features
 
-- search photos +(loading, result, clear, research, image overlay for readability)
-- grid to present photos from the API, the first row containing the photos overlap the backdrop behind the search bar.
-- modal view (small downloaded image shown as fallback before higher quality one is downloaded with sensible accessibility)
-- mobile responsive (js + css)
-- Load more images on scroll end
-- base font size is 62.5% (1rem = 10px) for sizing workflow
+- Photo Search: Includes loading indicators, result clearing, re-search, and an overlay effect for better readability.
 
-## Algorithm
+- Infinite Scrolling: Loads additional images as you scroll to the bottom.
 
-- getMinHeightColumnDistribution: Algorithm that takes in an array of photos and distributes into columns sections in such a way that the height difference is minimal visually.
-  This uses the aspect ratio (widht/height) from the unsplash api for calculation
+- Photo Grid Layout: Displays photos with a custom grid where the first row overlaps the search bar backdrop.
 
-## Composables
+- Modal View: Opens photos in a modal with a low-resolution preview that upgrades to a higher-quality image once loaded (optimized for accessibility).
+
+- Responsive Design: Fully responsive on mobile, with adaptive behaviors using JavaScript and CSS.
+
+- Font Size Optimization: Base font size set to 62.5% (1rem = 10px) for consistent sizing workflow.
+
+### Algorithm
+
+- `getMinHeightDistribution`: Distributes photos into columns to minimize height differences visually, using aspect ratio data from the Unsplash API for calculation.
+
+### Composables
 
 `useFetch()`
 `useMedia()`
 `useInView()`
 
-## Libraries and APIs
+### Libraries and APIs
 
 - Radix UI: handles the accessible modal.
 - Axios: Data fetching
-- Intersection Observer
+- Intersection Observer: Enables efficient scroll-based image loading.
 
-## Font
+### Font
 
-Googles Plus+Jakarta+Sans font. Closest match to the ui that could be found
+Uses Google's Plus Jakarta Sans, chosen for its close match to the intended UI aesthetic.
 
-## Considerations, observations, todos
+### Notes & Future Improvements
 
-- An easier way to handle the column layouts would be to implement a custom masonry layout as css masonry layout is not widely supported
+- A custom masonry layout could better handle column arrangements, though CSS masonry layout lacks broad support currently.
