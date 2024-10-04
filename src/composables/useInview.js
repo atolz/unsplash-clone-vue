@@ -16,7 +16,9 @@ export default function useInview(target, container = null, rootMargin, threshol
   const observe = new IntersectionObserver(handleIntersect, options.value);
 
   onMounted(() => {
-    observe.observe(target.value);
+    if (target.value) {
+      observe.observe(target.value);
+    }
   });
 
   return { inView };

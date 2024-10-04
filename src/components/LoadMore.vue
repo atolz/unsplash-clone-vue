@@ -1,40 +1,47 @@
 
 <script setup>
 import { ref, watchEffect } from "vue";
-import useInView from "../composables/useInview";
-const target = ref(null);
-const { inView } = useInView(target, undefined, undefined, [0.5]);
+import InView from "./InView.vue";
+import LoadingMore from "./LoadingMore.vue";
 
 const { loading, initLoadMore } = defineProps({
   loading: Boolean,
   initLoadMore: Boolean,
 });
-
-const emits = defineEmits(["more"]);
-
-watchEffect(() => {
-  console.log("is load more in view", inView.value, loading);
-  if (!loading && inView.value && !initLoadMore) {
-    console.log("should fetch more");
-    emits("more");
-  }
-});
 </script>
 
 <template>
   <div>
-    <div ref="target" class="buffer">
-      <button @click="$emit('more')">Load More</button>
+    <div class="buffer">
+      <button
+        @click="
+          $emit('more');
+          showInitialLoadMore = false;
+        "
+        v-if="initLoadMore"
+      >
+        Load More...
+      </button>
+      <LoadingMore v-if="loading" />
+      <InView @visible="$emit('more')" v-if="!loading && !initLoadMore" />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.loader {
+  height: 2rem;
+  widows: 100%;
+}
 .buffer {
   min-height: 7rem;
   max-width: 800px;
   margin: 0 auto;
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 button {
   width: 100%;

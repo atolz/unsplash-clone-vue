@@ -59,9 +59,9 @@ const handleSearch = (val) => {
     :items="photos"
   />
   <CardsLoading v-if="loading && initLoadMore" />
-  <EmptyState v-if="!photos.length" />
+  <EmptyState v-if="!photos.length && !loading" />
   <LoadMore
-    v-if="!loading && photos.length"
+    v-if="photos.length"
     :loading="loading"
     :initLoadMore="initLoadMore"
     @more="
@@ -69,9 +69,9 @@ const handleSearch = (val) => {
       initLoadMore = false;
     "
   />
-  <div class="extra-loading" v-if="loading">
+  <!-- <div class="extra-loading" v-if="loading">
     <LoadingMore />
-  </div>
+  </div> -->
 </template> 
 
 <style lang="scss" scoped>
