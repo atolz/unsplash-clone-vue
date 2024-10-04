@@ -53,6 +53,7 @@ Uses Google's Plus Jakarta Sans, chosen for its close match to the intended UI a
 ### Notes & Future Improvements
 
 - A custom masonry layout could better handle column arrangements, though CSS masonry layout lacks broad support currently.
+- BlurHash hint
 - Download image
 - Custom Error and empty states
 - API Rate Limitation: Unsplash demo apps are restricted to 50 requests per hour. Upon reaching this limit, you may encounter repeated images or an empty state.
