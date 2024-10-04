@@ -17,6 +17,7 @@ defineProps({
   },
   height: Number,
   width: Number,
+  hash: String,
   alt_description: String,
 });
 </script>
@@ -26,9 +27,11 @@ defineProps({
     <div class="image-container">
       <img
         :height="height"
+        :width="width"
         :src="imageUrl"
         :alt="alt_description"
-        :style="`aspect-ratio: ${width} / ${height};`"
+        :style="`aspect-ratio: ${width} / ${height};background:grey`"
+        :hash="hash"
       />
       <div class="gradient-overlay"></div>
       <div class="info-container">

@@ -51,6 +51,7 @@ const isOpen = ref(false);
         :key="item.id ?? index"
         :height="item?.height"
         :width="item?.width"
+        :hash="item?.blur_hash"
         @click="
           console.log('item clikced');
           isOpen = true;
