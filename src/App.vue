@@ -4,6 +4,7 @@ import CardsLoading from "./components/CardsLoading.vue";
 import LoadingCard from "./components/LoadingCard.vue";
 import LoadingMore from "./components/LoadingMore.vue";
 import CardsContainer from "./components/CardsContainer.vue";
+import EmptyState from "./components/EmptyState.vue";
 // import CardsContainer2 from "./components/CardsContainer2.vue";
 import SearchPanel from "./components/SearchPanel.vue";
 import LoadMore from "./components/LoadMore.vue";
@@ -15,45 +16,49 @@ const router = useRouter();
 const route = useRoute();
 
 const page = ref(1);
-const search = computed({
-  get() {
-    return route.query.search;
-  },
-  set(search) {
-    router.push({ query: { search } });
-  },
+const search = ref();
+const defaultValue = computed(() => route.query.search);
+
+router.isReady().then(() => {
+  if (route.query.search) {
+    search.value = route.query.search;
+  } else {
+    search.value = "African";
+  }
 });
-watchEffect(() => {
-  console.log("search change", search.value);
-});
-const url = computed(
-  () =>
-    `https://api.unsplash.com/search/photos/?page=${page.value}&query=${
-      search.value ?? "African"
-    }&client_id=${import.meta.env.VITE_APP_ID}`
+
+const url = computed(() =>
+  search.value
+    ? `https://api.unsplash.com/search/photos/?page=${page.value}&query=${
+        search.value
+      }&order_by=latest&client_id=${import.meta.env.VITE_APP_ID}`
+    : undefined
 );
 const { data, loading } = useFetch(url);
 const photos = computed(() => data?.value?.results ?? []);
 const initLoadMore = ref(true);
+
+const onSearch = (val) => {
+  search.value = val;
+  page.value = 1;
+  router.push({ query: { search: val } });
+  initLoadMore.value = true;
+};
 </script>
 
 <template>
   <SearchPanel
-    @search="
-      (val) => {
-        search = val;
-
-        initLoadMore = true;
-      }
-    "
+    @search="onSearch"
     :loading="loading"
     :search="search"
+    :defaultValue="defaultValue"
   />
   <!-- <CardsContainer2 v-if="!loading || !initLoadMore" :items="photos" /> -->
   <CardsContainer v-if="!loading || !initLoadMore" :items="photos" />
   <CardsLoading v-if="loading && initLoadMore" />
+  <EmptyState v-if="!photos.length" />
   <LoadMore
-    v-if="!loading"
+    v-if="!loading && photos.length"
     :loading="loading"
     :initLoadMore="initLoadMore"
     @more="
@@ -71,5 +76,10 @@ const initLoadMore = ref(true);
   padding: 10px 0;
   margin: 0 auto;
   width: max-content;
+
+  div {
+    color: black;
+    margin: 200px;
+  }
 }
 </style>

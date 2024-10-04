@@ -11,7 +11,6 @@ const { items } = defineProps({
     type: Array,
     default: [],
   },
-  clear: Boolean,
 });
 const isTab = useMedia("(max-width: 700px)");
 const isMobile = useMedia("(max-width: 300px)");

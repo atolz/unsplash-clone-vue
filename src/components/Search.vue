@@ -1,19 +1,32 @@
 <script setup>
-import { ref, defineProps, watch, onMounted } from "vue";
+import { ref, defineProps, watch, onMounted, watchEffect, computed } from "vue";
 import { Search, X } from "lucide-vue-next";
+import { useRoute, useRouter } from "vue-router";
 
 const emits = defineEmits(["search"]);
 
 const searchQuery = ref("");
 const inputRef = ref(null);
+const router = useRouter();
+const route = useRoute();
+const defaultValue = computed(() => route.query.search);
 
-onMounted(() => inputRef.value.focus());
+const handleSearch = () => {
+  searchQuery.value = undefined;
+  router.push({ query: { search: undefined } });
+};
+
+watchEffect(() => {
+  inputRef?.value?.focus();
+  searchQuery.value = defaultValue.value;
+});
 </script>
 
 <template>
   <form @submit.prevent="emits('search', searchQuery)" class="search-bar">
     <Search :size="18" class="icon" />
     <input
+      required
       ref="inputRef"
       autofocus
       type="search"
@@ -21,10 +34,7 @@ onMounted(() => inputRef.value.focus());
       placeholder="Search for photos"
     />
     <button
-      @click="
-        searchQuery = undefined;
-        inputRef.focus();
-      "
+      @click="handleSearch"
       type="button"
       title="clear search"
       v-if="searchQuery"
