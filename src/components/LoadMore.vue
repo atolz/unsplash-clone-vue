@@ -12,13 +12,13 @@ const { loading, initLoadMore } = defineProps({
 
 const emits = defineEmits(["more"]);
 
-// watchEffect(() => {
-//   console.log("is load more in view", inView.value, loading);
-//   if (!loading && inView.value && !initLoadMore) {
-//     console.log("should fetch more");
-//     emits("more");
-//   }
-// });
+watchEffect(() => {
+  console.log("is load more in view", inView.value, loading);
+  if (!loading && inView.value && !initLoadMore) {
+    console.log("should fetch more");
+    emits("more");
+  }
+});
 </script>
 
 <template>

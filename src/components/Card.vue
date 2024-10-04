@@ -16,6 +16,7 @@ defineProps({
     default: "Yosemite National Park, CA",
   },
   height: Number,
+  width: Number,
   alt_description: String,
 });
 </script>
@@ -23,7 +24,12 @@ defineProps({
 <template>
   <div class="card">
     <div class="image-container">
-      <img :height="height" :src="imageUrl" :alt="alt_description" />
+      <img
+        :height="height"
+        :src="imageUrl"
+        :alt="alt_description"
+        :style="`aspect-ratio: ${width} / ${height};`"
+      />
       <div class="gradient-overlay"></div>
       <div class="info-container">
         <h3 class="photographer-name truncate">{{ title }}</h3>
