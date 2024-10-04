@@ -5,12 +5,13 @@ export default function useFetch(url) {
   const data = ref(null);
   const error = ref(null);
   const loading = ref(null);
+  let controller = ref(null);
 
   watchEffect(async (cleanup) => {
     if (!url) {
       return;
     }
-    let controller = new AbortController();
+    controller = new AbortController();
     loading.value = true;
     try {
       const resp = await axios.get(toValue(url), { signal: controller.signal });
