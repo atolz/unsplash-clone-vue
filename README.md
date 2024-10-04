@@ -28,7 +28,7 @@ npm run dev
 
 - `getMinHeightDistribution`: Distributes photos into columns to minimize height differences visually, using aspect ratio data from the Unsplash API for calculation.</br>
 <div style="text-align: center;">
-Example:</div> ![App Screenshot](https://github.com/atolz/Unsplash-Clone-Vue/blob/main/shot-1.png?raw=true) to ![App Screenshot 2](https://github.com/atolz/Unsplash-Clone-Vue/blob/main/shot-2.png?raw=true)
+Example:</div> ![App Screenshot](https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-1.png?raw=true) to ![App Screenshot 2](https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-2.png?raw=true)
 
 ### Composables
 
