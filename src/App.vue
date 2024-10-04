@@ -4,7 +4,7 @@ import CardsLoading from "./components/CardsLoading.vue";
 import LoadingCard from "./components/LoadingCard.vue";
 import LoadingMore from "./components/LoadingMore.vue";
 import CardsContainer from "./components/CardsContainer.vue";
-import CardsContainer2 from "./components/CardsContainer2.vue";
+// import CardsContainer2 from "./components/CardsContainer2.vue";
 import SearchPanel from "./components/SearchPanel.vue";
 import LoadMore from "./components/LoadMore.vue";
 import useFetch from "./composables/useFetch.js";
@@ -14,26 +14,37 @@ import { useRoute, useRouter } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 
-const page = ref(1);
-const search = computed({
+router.isReady().then(() => {
+  pagination.value.page = 1;
+  if (!pagination.value.search) {
+    pagination.value.search = "African";
+  }
+});
+
+// const pagination = ref({ page: 1, search: undefined });
+
+// watch(
+//   () => pagination.value.search,
+//   () => {
+//     router.push({ query: { search: pagination.value.search } });
+//   }
+// );
+const pagination = computed({
   get() {
-    return route.query.search;
+    return { search: route.query.search, page: route.query.page };
   },
-  set(search) {
-    router.push({ query: { search } });
+  set(data) {
+    router.push({ query: { search: data.search, page: data.page } });
   },
 });
 
-onMounted(() => {
-  if (!search.value) {
-    search.value = "African";
-  }
-});
 const url = computed(() =>
-  search.value
-    ? `https://api.unsplash.com/search/photos/?page=${page.value}&query=${
-        search.value
-      }&client_id=${import.meta.env.VITE_APP_ID}`
+  pagination.value.search
+    ? `https://api.unsplash.com/search/photos/?page=${
+        pagination?.value?.page
+      }&query=${pagination.value?.search}&client_id=${
+        import.meta.env.VITE_APP_ID
+      }`
     : undefined
 );
 const { data, loading } = useFetch(url);
@@ -45,14 +56,14 @@ const initLoadMore = ref(true);
   <SearchPanel
     @search="
       (val) => {
-        search = val;
-        page = 1;
+        pagination = { page: 1, search: val };
         initLoadMore = true;
       }
     "
     :loading="loading"
-    :search="search"
+    :search="pagination?.search"
   />
+  <!-- <CardsContainer2 v-if="!loading || !initLoadMore" :items="photos" /> -->
   <CardsContainer v-if="!loading || !initLoadMore" :items="photos" />
   <CardsLoading v-if="loading && initLoadMore" />
   <LoadMore
@@ -60,14 +71,14 @@ const initLoadMore = ref(true);
     :loading="loading"
     :initLoadMore="initLoadMore"
     @more="
-      page = page + 1;
+      pagination = { ...pagination, page: parseInt(pagination.page) + 1 };
       initLoadMore = false;
     "
   />
   <div class="extra-loading">
     <LoadingMore v-if="!initLoadMore && loading" />
   </div>
-</template>
+</template> 
 
 <style lang="scss" scoped>
 .extra-loading {

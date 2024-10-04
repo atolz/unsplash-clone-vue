@@ -11,6 +11,7 @@ const { items } = defineProps({
     type: Array,
     default: [],
   },
+  clear: Boolean,
 });
 const isTab = useMedia("(max-width: 700px)");
 const isMobile = useMedia("(max-width: 300px)");
@@ -79,7 +80,7 @@ const isOpen = ref(false);
   align-items: start;
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   transform: translateY(-35px);
-  // grid-template-rows: masonry;
+  // min-height: 100vh;
   @media (max-width: 800px) {
     --column-gutter: 20px;
   }

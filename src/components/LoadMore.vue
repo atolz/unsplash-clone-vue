@@ -12,19 +12,19 @@ const { loading, initLoadMore } = defineProps({
 
 const emits = defineEmits(["more"]);
 
-watchEffect(() => {
-  console.log("is load more in view", inView.value, loading);
-  if (!loading && inView.value && !initLoadMore) {
-    console.log("should fetch more");
-    emits("more");
-  }
-});
+// watchEffect(() => {
+//   console.log("is load more in view", inView.value, loading);
+//   if (!loading && inView.value && !initLoadMore) {
+//     console.log("should fetch more");
+//     emits("more");
+//   }
+// });
 </script>
 
 <template>
   <div>
     <div ref="target" class="buffer">
-      <button @click="$emit('more')" v-if="initLoadMore">Load More</button>
+      <button @click="$emit('more')">Load More</button>
     </div>
   </div>
 </template>

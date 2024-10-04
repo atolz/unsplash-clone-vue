@@ -1,22 +1,41 @@
 # Frontend Test Cowrywise
 
+[Unsplash clone](https://nextjs.org/) built with Vite + Vue 3(Composition API), SCSS,
+
+```bash
+npm run dev
+```
+
 # Features
 
 - search photos +(loading, result, clear, research, image overlay for readability)
 - grid to present photos from the API, the first row containing the photos overlap the backdrop behind the search bar.
 - modal view (small downloaded image shown as fallback before higher quality one is downloaded with sensible accessibility)
 - mobile responsive
-- css reset
+- Load more images
 - base font size is 62.5% (1rem = 10px) for sizing workflow
 
-# Render logic
+# Algorithm
+
+- getMinHeightColumnDistribution: Algorithm that takes in an array of photos and distributes into columns sections in such a way that the height difference is minimal visually.
+  This uses the aspect ratio (widht/height) from the unsplash api for calculation
 
 # Composables
 
-# Libraries
+`useFetch()`
+`useMedia()`
+`useInView()`
+
+# Libraries and APIs
+
+- Radix UI: handles the accessible modal.
+- Axios: Data fetching
+- Intersection Observer
 
 # Font
 
-# Todos
+Googles Plus+Jakarta+Sans font. Closest match to the ui that could be found
 
-# Algorithm
+# Considerations, observations, todos
+
+- couldnt find the exact font as seen on the ui
