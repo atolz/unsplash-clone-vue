@@ -69,8 +69,8 @@ const onSearch = (val) => {
       initLoadMore = false;
     "
   />
-  <div class="extra-loading">
-    <LoadingMore v-if="!initLoadMore && loading" />
+  <div class="extra-loading" v-if="loading && !initLoadMore">
+    <LoadingMore />
   </div>
 </template> 
 
@@ -80,9 +80,9 @@ const onSearch = (val) => {
   margin: 0 auto;
   width: max-content;
 
-  div {
-    color: black;
-    margin: 200px;
-  }
+  // div {
+  //   color: black;
+  //   margin: 200px;
+  // }
 }
 </style>

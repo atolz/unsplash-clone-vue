@@ -12,13 +12,13 @@ const { loading, initLoadMore } = defineProps({
 
 const emits = defineEmits(["more"]);
 
-// watchEffect(() => {
-//   console.log("is load more in view", inView.value, loading);
-//   if (!loading && inView.value && !initLoadMore) {
-//     console.log("should fetch more");
-//     emits("more");
-//   }
-// });
+watchEffect(() => {
+  console.log("is load more in view", inView.value, loading);
+  if (!loading && inView.value && !initLoadMore) {
+    console.log("should fetch more");
+    emits("more");
+  }
+});
 </script>
 
 <template>
@@ -34,8 +34,7 @@ const emits = defineEmits(["more"]);
   min-height: 7rem;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 20px;
-  //   background: red;
+  padding: 10px 20px;
 }
 button {
   width: 100%;
