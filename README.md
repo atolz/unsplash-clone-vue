@@ -27,6 +27,7 @@ npm run dev
 ### Algorithm
 
 - `getMinHeightDistribution`: Distributes photos into columns to minimize height differences visually, using aspect ratio data from the Unsplash API for calculation.
+  Example: ![App Screenshot](shot-1.png) to ![App Screenshot](shot-2.png)
 
 ### Composables
 
