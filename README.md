@@ -12,17 +12,17 @@ npm run dev
 
 ### Features
 
-- Photo Search: Includes router state search, loading indicators, result clearing, re-search, and an overlay effect for better readability.
+- **Photo Search:** Includes router state search, loading indicators, result clearing, re-search, and an overlay effect for better readability.
 
 - **Infinite Scrolling:** Loads additional images as you scroll to the bottom.
 
-- Photo Grid Layout: Displays photos with a custom grid where the first row overlaps the search bar backdrop.
+- **Photo Grid Layout:** Displays photos with a custom grid where the first row overlaps the search bar backdrop.
 
-- Modal View: Opens photos in a modal with a low-resolution preview that upgrades to a higher-quality image once loaded (optimized for accessibility).
+- **Modal View:** Opens photos in a modal with a low-resolution preview that upgrades to a higher-quality image once loaded (optimized for accessibility).
 
-- Responsive Design: Fully responsive on mobile, with adaptive behaviors using JavaScript and CSS.
+- **Responsive Design:** Fully responsive on mobile, with adaptive behaviors using JavaScript and CSS.
 
-- Font Size Optimization: Base font size set to 62.5% (1rem = 10px) for consistent sizing workflow.
+- **Font Size Optimization:** Base font size set to 62.5% (1rem = 10px) for consistent sizing workflow.
 
 ### Algorithm
 
@@ -53,5 +53,6 @@ Uses Google's Plus Jakarta Sans, chosen for its close match to the intended UI a
 ### Notes & Future Improvements
 
 - A custom masonry layout could better handle column arrangements, though CSS masonry layout lacks broad support currently.
-- Download
+- Download image
 - Custom Error and empty states
+- API Rate Limitation: Unsplash demo apps are restricted to 50 requests per hour. Upon reaching this limit, you may encounter repeated images or an empty state.
