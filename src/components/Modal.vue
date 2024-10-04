@@ -23,29 +23,37 @@ defineProps({
 <template>
   <DialogRoot :open="isOpen" @update:open="(open) => !open && $emit('close')">
     <DialogPortal>
-      <DialogOverlay class="DialogOverlay" />
-      <DialogContent class="DialogContent">
-        <DialogClose class="IconButton" aria-label="Close">
-          <X :size="26" />
-        </DialogClose>
-        <img :src="imageUrl" aria-hidden />
-        <img :src="imageUrlFb" :alt="alt_description" />
-        <div class="info-container">
-          <DialogTitle class="title">{{ title }}</DialogTitle>
-          <DialogDescription class="location">
-            {{ location }}
-          </DialogDescription>
-        </div>
-      </DialogContent>
+      <DialogOverlay class="DialogOverlay">
+        <DialogContent class="DialogContent">
+          <DialogClose class="IconButton" aria-label="Close">
+            <X :size="26" />
+          </DialogClose>
+          <img :src="imageUrl" aria-hidden />
+          <img :src="imageUrlFb" :alt="alt_description" />
+          <div class="info-container">
+            <DialogTitle class="title">{{ title }}</DialogTitle>
+            <DialogDescription class="location">
+              {{ location }}
+            </DialogDescription>
+          </div>
+        </DialogContent>
+      </DialogOverlay>
     </DialogPortal>
   </DialogRoot>
 </template>
 
 <style lang="scss">
 .DialogOverlay {
-  background-color: hsl(206 22% 7% / 20%);
+  background: rgba(0 0 0 / 0.5);
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 20px 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -55,11 +63,9 @@ defineProps({
   border-radius: var(--radius);
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 90vw;
+  height: auto;
   max-width: 900px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -137,11 +143,11 @@ defineProps({
 @keyframes contentShow {
   from {
     opacity: 0;
-    transform: translate(-50%, -48%) scale(0.96);
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
   }
 }
 </style>
