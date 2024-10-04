@@ -27,11 +27,11 @@ npm run dev
 ### Algorithm
 
 - `getMinHeightDistribution`: Distributes photos into columns to minimize height differences visually, using aspect ratio data from the Unsplash API for calculation.</br>
-<div style="text-align: center;">
+<div align="center">
 Example:</div>
 <p align="center">
-  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-1.png?raw=true" width="350" title="hover text">
-  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-2.png?raw=true" width="350" alt="accessibility text">
+  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-1.png?raw=true" width="350" title="From this">
+  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-2.png?raw=true" width="350" alt="accessibility text" title="To this">
 </p>
 
 ### Composables
