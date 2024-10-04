@@ -1,6 +1,6 @@
 # Frontend Test Cowrywise
 
-[Unsplash clone](https://nextjs.org/) built with Vite + Vue 3(Composition API), SCSS,
+[Unsplash clone](https://unsplash-clone-vue.vercel.app/) built with Vite + Vue 3(Composition API), SCSS,
 
 ```bash
 npm run dev
@@ -38,4 +38,4 @@ Googles Plus+Jakarta+Sans font. Closest match to the ui that could be found
 
 # Considerations, observations, todos
 
-- couldnt find the exact font as seen on the ui
+- An easier way to handle the column layouts would be to implement a custom masonry layout as css masonry layout is not widely supported
