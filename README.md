@@ -30,8 +30,8 @@ npm run dev
 <div align="center">
 Example:</div>
 <p align="center">
-  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-1.png?raw=true" width="350" title="From this">
-  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-2.png?raw=true" width="350" alt="accessibility text" title="To this">
+  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-1.png?raw=true" height="350" alt="default layout" title="From this">
+  <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-2.png?raw=true" height="350" alt="optimized layout after algorith" title="To this">
 </p>
 
 ### Composables
