@@ -1,32 +1,26 @@
 <script setup>
-import Card from "./components/Card.vue";
-import CardsLoading from "./components/CardsLoading.vue";
-import LoadingCard from "./components/LoadingCard.vue";
-import LoadingMore from "./components/LoadingMore.vue";
-import CardsContainer from "./components/CardsContainer.vue";
-import EmptyState from "./components/EmptyState.vue";
-import CardsContainer2 from "./components/CardsContainer2.vue";
+import { computed, onMounted, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import SearchPanel from "./components/SearchPanel.vue";
+import CardsContainer from "./components/CardsContainer.vue";
+import CardsLoading from "./components/CardsLoading.vue";
+import EmptyState from "./components/EmptyState.vue";
 import LoadMore from "./components/LoadMore.vue";
 import useFetch from "./composables/useFetch.js";
-import { computed, onMounted, ref, watch, watchEffect } from "vue";
-import { useRoute, useRouter } from "vue-router";
 
+// Vue Router hooks
 const router = useRouter();
 const route = useRoute();
 
 const page = ref(1);
 const search = ref();
-const defaultValue = computed(() => route.query.search);
 
+// Set initial search value when router is ready
 router.isReady().then(() => {
-  if (route.query.search) {
-    search.value = route.query.search;
-  } else {
-    search.value = "African";
-  }
+  search.value = route.query.search || "African";
 });
 
+// API URL based on search value and pagination
 const url = computed(() =>
   search.value
     ? `https://api.unsplash.com/search/photos/?page=${page.value}&query=${
@@ -34,10 +28,13 @@ const url = computed(() =>
       }&order_by=latest&client_id=${import.meta.env.VITE_APP_ID}`
     : undefined
 );
+
+// Fetching data from the API
 const { data, loading } = useFetch(url);
 const photos = computed(() => data?.value?.results ?? []);
 const initLoadMore = ref(true);
 
+// Handle search input and reset pagination
 const handleSearch = (val) => {
   search.value = val;
   page.value = 1;
@@ -47,16 +44,7 @@ const handleSearch = (val) => {
 </script>
 
 <template>
-  <SearchPanel
-    @search="handleSearch"
-    :loading="loading"
-    :search="search"
-    :defaultValue="defaultValue"
-  />
-  <!-- <CardsContainer2
-    v-if="(!loading || !initLoadMore) && photos.length"
-    :items="photos"
-  /> -->
+  <SearchPanel @search="handleSearch" :loading="loading" :search="search" />
   <CardsContainer
     v-if="(!loading || !initLoadMore) && photos.length"
     :items="photos"
@@ -72,9 +60,6 @@ const handleSearch = (val) => {
       initLoadMore = false;
     "
   />
-  <!-- <div class="extra-loading" v-if="loading">
-    <LoadingMore />
-  </div> -->
 </template> 
 
 <style lang="scss" scoped>
@@ -82,10 +67,5 @@ const handleSearch = (val) => {
   padding: 10px 0;
   margin: 0 auto;
   width: max-content;
-
-  // div {
-  //   color: black;
-  //   margin: 200px;
-  // }
 }
 </style>

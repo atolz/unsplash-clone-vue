@@ -30,8 +30,8 @@ const imgLoaded = ref(false);
 
 onMounted(() => {
   const pixels = decode(hash, image.value.width, image.value.height);
-  console.log("pixesl is", pixels, hash, image.value.width, image.value.height);
-  console.log("canvas is", hash, canvas.value.width, canvas.value.height);
+  // console.log("pixesl is", pixels, hash, image.value.width, image.value.height);
+  // console.log("canvas is", hash, canvas.value.width, canvas.value.height);
   canvas.value.width = image.value.width;
   canvas.value.height = image.value.height;
   const ctx = canvas.value.getContext("2d");

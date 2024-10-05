@@ -11,9 +11,15 @@ const router = useRouter();
 const route = useRoute();
 const defaultValue = computed(() => route.query.search);
 
-const handleSearch = () => {
+const handleClearSearch = () => {
   searchQuery.value = undefined;
   router.push({ query: { search: undefined } });
+};
+
+const handleInput = (e) => {
+  if (!e.target.value) {
+    router.push({ query: { search: undefined } });
+  }
 };
 
 watchEffect(() => {
@@ -32,10 +38,11 @@ watchEffect(() => {
       autofocus
       type="search"
       v-model="searchQuery"
+      @input="handleInput"
       placeholder="Search for photos"
     />
     <button
-      @click="handleSearch"
+      @click="handleClearSearch"
       type="button"
       title="clear search"
       v-if="searchQuery"
@@ -49,6 +56,7 @@ watchEffect(() => {
 
 
 <style lang="scss" scoped>
+$media-sm: 480px;
 .search-bar {
   display: flex;
   align-items: center;
