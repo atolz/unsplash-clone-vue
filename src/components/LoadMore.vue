@@ -32,7 +32,6 @@ const { loading, initLoadMore } = defineProps({
   flex-direction: column;
   align-items: center;
   padding: 0 20px;
-  padding-bottom: 2rem;
 }
 button {
   width: 100%;

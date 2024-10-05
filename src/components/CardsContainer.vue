@@ -1,7 +1,6 @@
 <script setup>
 import { computed, ref, watchEffect } from "vue";
 import useMedia from "../composables/useMedia";
-import useSortLayout from "../composables/useSortLayout";
 import getMinHeightDistribution from "../utils/getMinHeightDistribution";
 import Card from "./Card.vue";
 import Modal from "./Modal.vue";

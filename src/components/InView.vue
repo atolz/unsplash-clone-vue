@@ -8,7 +8,7 @@ const target = ref(null);
 const { inView } = useInView(target, undefined, undefined, [1]);
 
 watchEffect(() => {
-  console.log("is load more in view", inView.value);
+  // console.log("is load more in view", inView.value);
   if (inView.value) {
     emit("visible");
   }
