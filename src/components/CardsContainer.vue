@@ -52,6 +52,7 @@ const isOpen = ref(false);
         :height="item?.height"
         :width="item?.width"
         :hash="item?.blur_hash"
+        :color="item?.color"
         @click="
           console.log('item clikced');
           isOpen = true;
@@ -61,6 +62,8 @@ const isOpen = ref(false);
             title: item?.user?.name,
             location: item?.user?.location,
             alt_description: item?.alt_description,
+            hash: item?.blur_hash,
+            color: item?.color,
           };
         "
       />

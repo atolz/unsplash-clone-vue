@@ -1,8 +1,10 @@
 
 <script setup>
 import { MapPin } from "lucide-vue-next";
+import { onMounted, onUpdated, ref } from "vue";
+import { decode } from "blurhash";
 
-defineProps({
+const { hash, width, height } = defineProps({
   imageUrl: {
     type: String,
     default: "/placeholder.svg?height=300&width=400",
@@ -17,23 +19,43 @@ defineProps({
   },
   height: Number,
   width: Number,
+  color: String,
   hash: String,
   alt_description: String,
+});
+
+const image = ref(null);
+const canvas = ref(null);
+const imgLoaded = ref(false);
+
+onMounted(() => {
+  const pixels = decode(hash, image.value.width, image.value.height);
+  console.log("pixesl is", pixels, hash, image.value.width, image.value.height);
+  console.log("canvas is", hash, canvas.value.width, canvas.value.height);
+  canvas.value.width = image.value.width;
+  canvas.value.height = image.value.height;
+  const ctx = canvas.value.getContext("2d");
+  const imageData = ctx.createImageData(image.value.width, image.value.height);
+  imageData.data.set(pixels);
+  ctx.putImageData(imageData, 0, 0);
 });
 </script>
 
 <template>
   <div class="card">
-    <div class="image-container">
+    <div ref="container" class="image-container">
+      <canvas ref="canvas"></canvas>
       <img
+        :load="(imgLoaded = true)"
+        ref="image"
         :height="height"
         :width="width"
         :src="imageUrl"
         :alt="alt_description"
-        :style="`aspect-ratio: ${width} / ${height};background:grey`"
+        :style="`aspect-ratio: ${width} / ${height};`"
         :hash="hash"
       />
-      <div class="gradient-overlay"></div>
+      <!-- <div class="gradient-overlay"></div> -->
       <div class="info-container">
         <h3 class="photographer-name truncate">{{ title }}</h3>
         <div class="location truncate">
@@ -56,14 +78,13 @@ defineProps({
 .card {
   --index: 0;
   width: 100%;
-  // height: max-content;
+  position: relative;
   max-width: 400px;
   overflow: hidden;
   border-radius: 6px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  // cursor: pointer;
   cursor: zoom-in;
-  animation: fadeIn 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95) backwards;
+  // animation: fadeIn 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95) backwards;
 
   @media (max-width: 400px) {
     max-width: 100%;
@@ -74,15 +95,23 @@ defineProps({
     // aspect-ratio: 4 / 3;
 
     img {
+      position: relative;
       width: 100%;
       height: auto;
       object-fit: cover;
+      z-index: 2;
+    }
+
+    canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
     }
 
     .gradient-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      // background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
     }
 
     .info-container {

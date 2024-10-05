@@ -17,6 +17,8 @@ defineProps({
   title: String,
   location: String,
   alt_description: String,
+  color: String,
+  hash: String,
 });
 </script>
 
@@ -29,7 +31,7 @@ defineProps({
             <X :size="26" />
           </DialogClose>
           <img :src="imageUrl" aria-hidden />
-          <img :src="imageUrlFb" :alt="alt_description" />
+          <img :src="imageUrlFb" :alt="alt_description" :style="color" />
           <div class="info-container">
             <DialogTitle class="title">{{ title }}</DialogTitle>
             <DialogDescription class="location">
@@ -69,10 +71,16 @@ defineProps({
   max-width: 900px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
+  @media (max-width: 400px) {
+    --radius: 0;
+    width: 100vw;
+    max-width: 100vw;
+  }
+
   img {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 80vh;
     object-fit: cover;
     object-position: top 10px;
     z-index: 1;
@@ -88,6 +96,9 @@ defineProps({
 
   .info-container {
     padding: 20px 30px 30px;
+    @media (max-width: 400px) {
+      padding: 20px;
+    }
 
     .title {
       font-size: 1.8rem;
@@ -95,6 +106,10 @@ defineProps({
       margin-bottom: 0.4rem;
       color: var(--color-primary);
       line-height: 1;
+
+      @media (max-width: 400px) {
+        font-size: 1.4rem;
+      }
     }
 
     .location {

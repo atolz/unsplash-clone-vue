@@ -65,6 +65,7 @@ const isOpen = ref(false);
       :imageUrl="item?.urls?.small"
       :key="item.id ?? index"
       :height="item?.height"
+      :width="item?.width"
       @click="
         console.log('item clikced');
         isOpen = true;

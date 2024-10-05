@@ -5,7 +5,7 @@ import LoadingCard from "./components/LoadingCard.vue";
 import LoadingMore from "./components/LoadingMore.vue";
 import CardsContainer from "./components/CardsContainer.vue";
 import EmptyState from "./components/EmptyState.vue";
-// import CardsContainer2 from "./components/CardsContainer2.vue";
+import CardsContainer2 from "./components/CardsContainer2.vue";
 import SearchPanel from "./components/SearchPanel.vue";
 import LoadMore from "./components/LoadMore.vue";
 import useFetch from "./composables/useFetch.js";
@@ -53,7 +53,10 @@ const handleSearch = (val) => {
     :search="search"
     :defaultValue="defaultValue"
   />
-  <!-- <CardsContainer2 v-if="!loading || !initLoadMore" :items="photos" /> -->
+  <!-- <CardsContainer2
+    v-if="(!loading || !initLoadMore) && photos.length"
+    :items="photos"
+  /> -->
   <CardsContainer
     v-if="(!loading || !initLoadMore) && photos.length"
     :items="photos"
