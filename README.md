@@ -37,12 +37,12 @@ Example:</div>
 ### UI/UX
 
 - Overlay effect for better readability
-- Clear search
 - Blur hash downloading images
 - Loading state while search
 - Empty state for no data
 - Load more on scroll with indicator
 - Auto select search on research
+- Clear search
 
 ### Composables
 
@@ -52,9 +52,10 @@ Example:</div>
 
 ### Libraries and APIs
 
-- Radix UI: handles the accessible modal.
+- Radix UI: handles the accessible modal
 - Axios: Data fetching
-- Intersection Observer: Enables efficient scroll-based image loading.
+- Intersection Observer: Enables efficient scroll-based image loading
+- JS blur-hash: for better UX
 
 ### Font
 
@@ -62,8 +63,8 @@ Uses Google's Plus Jakarta Sans, chosen for its close match to the intended UI a
 
 ### Notes & Future Improvements
 
-- A custom masonry layout could better handle column arrangements, though CSS masonry layout lacks broad support currently.
-- BlurHash hint
+- A custom third-party JS masonry layout can better handle column arrangements. The CSS masonry layout, while straightforward, currently lacks broad support
+- BlurHash hint (Done)
 - Download image
 - Custom Error and empty states
-- API Rate Limitation: Unsplash demo apps are restricted to 50 requests per hour. Upon reaching this limit, you may encounter repeated images or an empty state.
+- API Rate Limitation: Unsplash demo apps are restricted to 50 requests per hour. Upon reaching this limit, you may encounter repeated images or an empty state

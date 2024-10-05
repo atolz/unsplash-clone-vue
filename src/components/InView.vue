@@ -10,7 +10,6 @@ const { inView } = useInView(target, undefined, undefined, [1]);
 watchEffect(() => {
   console.log("is load more in view", inView.value);
   if (inView.value) {
-    console.log("should fetch more");
     emit("visible");
   }
 });
@@ -23,5 +22,6 @@ watchEffect(() => {
 <style lang="scss" scoped>
 div {
   height: 2rem;
+  width: 100%;
 }
 </style>

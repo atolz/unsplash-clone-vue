@@ -1,6 +1,5 @@
 
 <script setup>
-import { ref, watchEffect } from "vue";
 import InView from "./InView.vue";
 import LoadingMore from "./LoadingMore.vue";
 
@@ -29,11 +28,9 @@ const { loading, initLoadMore } = defineProps({
   min-height: 7rem;
   max-width: 800px;
   margin: 0 auto;
-  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 button {
   width: 100%;
