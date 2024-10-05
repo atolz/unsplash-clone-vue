@@ -25,12 +25,14 @@ const { loading, initLoadMore } = defineProps({
   widows: 100%;
 }
 .buffer {
-  min-height: 7rem;
+  min-height: 4rem;
   max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
+  padding-bottom: 2rem;
 }
 button {
   width: 100%;
