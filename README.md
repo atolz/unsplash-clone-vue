@@ -34,6 +34,16 @@ Example:</div>
   <img src="https://github.com/atolz/Unsplash-Clone-Vue/blob/main/public/shot-2.png?raw=true" height="350" alt="optimized layout after algorith" title="To this">
 </p>
 
+### UI/UX
+
+- Overlay effect for better readability
+- Clear search
+- Blur hash downloading images
+- Loading state while search
+- Empty state for no data
+- Load more on scroll with indicator
+- Auto select search on research
+
 ### Composables
 
 `useFetch()`
