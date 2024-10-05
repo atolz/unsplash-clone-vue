@@ -55,8 +55,8 @@ onMounted(() => {
         :style="`aspect-ratio: ${width} / ${height};`"
         :hash="hash"
       />
-      <!-- <div class="gradient-overlay"></div> -->
-      <div class="info-container">
+      <div class="gradient-overlay"></div>
+      <div v-if="imgLoaded" class="info-container">
         <h3 class="photographer-name truncate">{{ title }}</h3>
         <div class="location truncate">
           {{ location }}
@@ -111,7 +111,8 @@ onMounted(() => {
     .gradient-overlay {
       position: absolute;
       inset: 0;
-      // background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      z-index: 2;
     }
 
     .info-container {
@@ -120,6 +121,7 @@ onMounted(() => {
       left: 1rem;
       right: 1rem;
       color: white;
+      z-index: 2;
 
       .photographer-name {
         font-size: 1rem;

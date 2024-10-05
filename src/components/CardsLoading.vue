@@ -36,11 +36,11 @@ import LoadingCard from "./LoadingCard.vue";
     --column-gutter: 20px;
   }
   @media (max-width: 700px) {
-    --column-gutter: 20px;
+    --column-gutter: 10px;
     --columns: 2;
   }
-  @media (max-width: 400px) {
-    --column-gutter: 20px;
+  @media (max-width: 300px) {
+    --column-gutter: 10px;
     --columns: 1;
   }
 
@@ -48,7 +48,7 @@ import LoadingCard from "./LoadingCard.vue";
     display: grid;
     row-gap: 28px;
     &:nth-child(2) {
-      @media (max-width: 400px) {
+      @media (max-width: 300px) {
         display: none;
       }
     }
@@ -56,6 +56,10 @@ import LoadingCard from "./LoadingCard.vue";
       @media (max-width: 700px) {
         display: none;
       }
+    }
+
+    @media (max-width: 700px) {
+      row-gap: 10px;
     }
   }
 }

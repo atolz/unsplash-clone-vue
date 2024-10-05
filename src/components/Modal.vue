@@ -17,6 +17,8 @@ defineProps({
   title: String,
   location: String,
   alt_description: String,
+  height: Number,
+  width: Number,
   color: String,
   hash: String,
 });
@@ -30,8 +32,16 @@ defineProps({
           <DialogClose class="IconButton" aria-label="Close">
             <X :size="26" />
           </DialogClose>
-          <img :src="imageUrl" aria-hidden />
-          <img :src="imageUrlFb" :alt="alt_description" :style="color" />
+          <img
+            :src="imageUrl"
+            :style="`aspect-ratio: ${width} / ${height};`"
+            aria-hidden
+          />
+          <img
+            :src="imageUrlFb"
+            :alt="alt_description"
+            :style="`aspect-ratio: ${width} / ${height};color:${color}`"
+          />
           <div class="info-container">
             <DialogTitle class="title">{{ title }}</DialogTitle>
             <DialogDescription class="location">
@@ -55,7 +65,7 @@ defineProps({
   display: grid;
   place-items: center;
   overflow-y: auto;
-  padding: 20px 0;
+  padding: 50px 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -66,9 +76,8 @@ defineProps({
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   position: relative;
-  width: 90vw;
-  height: auto;
   max-width: 900px;
+  width: 90vw;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
   @media (max-width: 400px) {
@@ -80,11 +89,15 @@ defineProps({
   img {
     position: relative;
     width: 100%;
-    height: 80vh;
+    max-height: 74vh;
     object-fit: cover;
     object-position: top 10px;
     z-index: 1;
     border-radius: var(--radius) var(--radius) 0px 0px;
+
+    @media (max-width: 400px) {
+      max-height: 90vh;
+    }
 
     &:nth-child(2) {
       position: absolute;
@@ -141,8 +154,8 @@ defineProps({
   cursor: pointer;
 
   @media (max-width: 800px) {
-    top: 8px;
-    right: 8px;
+    top: -40px;
+    right: 4px;
   }
 }
 

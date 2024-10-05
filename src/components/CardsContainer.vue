@@ -62,6 +62,8 @@ const isOpen = ref(false);
             title: item?.user?.name,
             location: item?.user?.location,
             alt_description: item?.alt_description,
+            width: item?.width,
+            height: item?.height,
             hash: item?.blur_hash,
             color: item?.color,
           };
