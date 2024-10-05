@@ -18,6 +18,7 @@ const handleSearch = () => {
 
 watchEffect(() => {
   inputRef?.value?.focus();
+  inputRef?.value?.select();
   searchQuery.value = defaultValue.value;
 });
 </script>

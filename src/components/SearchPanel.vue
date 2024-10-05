@@ -19,7 +19,10 @@ const showSearch = ref(true);
       />
       <div v-if="!showSearch">
         <div v-if="!loading && search" class="status">
-          Search Results for <span>"{{ search }}"</span>
+          Search Results for
+          <q
+            ><span>{{ search }}</span></q
+          >
           <button
             title="search"
             @click="
@@ -31,8 +34,9 @@ const showSearch = ref(true);
           </button>
         </div>
         <div v-if="loading && search" class="status">
-          <span>
-            Searching for <span>"{{ search }}"</span></span
+          Searching for
+          <q
+            ><span>{{ search }}</span></q
           >
         </div>
       </div>
@@ -58,6 +62,9 @@ const showSearch = ref(true);
   background: #dae2eb;
   padding: 0 20px;
 
+  @media (max-width: 400) {
+    height: 185px;
+  }
   .container {
     width: 100%;
     max-width: 950px;
@@ -73,9 +80,14 @@ const showSearch = ref(true);
         font-size: 1.2rem;
       }
 
-      span {
+      q {
         color: var(--color-grey);
         margin-left: 4px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        span {
+          font-family: var(--font-family);
+        }
       }
       button {
         cursor: pointer;
