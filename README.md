@@ -38,6 +38,7 @@ Example:</div>
 
 - Overlay effect for better readability
 - Blur hash downloading images
+- Auto focus search
 - Loading state while search
 - Empty state for no data
 - Load more on scroll with indicator
