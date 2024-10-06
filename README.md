@@ -16,9 +16,7 @@ npm run dev
 
 - **Infinite Scrolling:** Loads additional images as you scroll to the bottom.
 
-- **Blur Hash:** Displayed a friendly blur placeholder for images before download completion.
-
-- **Photo Grid Layout:** Displays photos with a custom grid where the first row overlaps the search bar backdrop.
+- **Blur Hash:** Displays a friendly blur placeholder for images before download completion.
 
 - **Modal View:** Opens photos in a modal with a low-resolution preview that upgrades to a higher-quality image once loaded (optimized for accessibility).
 
@@ -26,7 +24,7 @@ npm run dev
 
 - **Font Size Optimization:** Base font size set to 62.5% (1rem = 10px) for consistent sizing workflow.
 
-### Algorithm
+### Algorithm.2
 
 - `getMinHeightDistribution`: Distributes photos into columns to minimize height differences visually, using aspect ratio data from the Unsplash API for calculation.</br>
 <div align="center">
