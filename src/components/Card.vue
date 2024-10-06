@@ -111,7 +111,13 @@ onMounted(() => {
     .gradient-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      // background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0)
+      );
       z-index: 2;
     }
 
