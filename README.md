@@ -16,9 +16,7 @@ npm run dev
 
 - **Infinite Scrolling:** Loads additional images as you scroll to the bottom.
 
-- **Blur Hash:** Displayed a friendly blur placeholder for images before download completion.
-
-- **Photo Grid Layout:** Displays photos with a custom grid where the first row overlaps the search bar backdrop.
+- **Blur Hash:** Displays a friendly blur placeholder for images before download completion.
 
 - **Modal View:** Opens photos in a modal with a low-resolution preview that upgrades to a higher-quality image once loaded (optimized for accessibility).
 
