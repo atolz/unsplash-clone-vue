@@ -89,15 +89,15 @@ defineProps({
   img {
     position: relative;
     width: 100%;
-    max-height: 74vh;
+    // max-height: 74vh;
     object-fit: cover;
     object-position: top 10px;
     z-index: 1;
     border-radius: var(--radius) var(--radius) 0px 0px;
 
-    @media (max-width: 400px) {
-      max-height: 90vh;
-    }
+    // @media (max-width: 400px) {
+    //   max-height: 90vh;
+    // }
 
     &:nth-child(2) {
       position: absolute;
